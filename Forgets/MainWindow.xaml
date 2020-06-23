@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:Forgets"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <local:ScheduleUserControl HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
-    </Grid>
+    <TabControl HorizontalAlignment="Left" Width="790" Margin="0,0,0,3">
+        <TabItem Header="Calendar" Margin="-2,-2,-164,0" Height="34" VerticalAlignment="Top">
+            <Grid Background="#FFE5E5E5">
+                <Grid Margin="0,0,0,-3">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF004080" Offset="0"/>
+                            <GradientStop Color="#FFABD5FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Calendar Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top"/>
+                    <ListView Grid.Column="1"></ListView>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="TabItem" Margin="164,-2,-326,2" RenderTransformOrigin="1.147,0.539">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+    </TabControl>
 </Window>
