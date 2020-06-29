@@ -6,22 +6,34 @@
         xmlns:local="clr-namespace:Forgets"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <TabControl HorizontalAlignment="Left" Width="790" Margin="0,0,0,3">
+    <TabControl HorizontalAlignment="Left" Width="790" Margin="0,0,0,1">
         <TabItem Header="Calendar" Margin="-2,-2,-164,0" Height="34" VerticalAlignment="Top">
-            <Grid Background="#FFE5E5E5">
+            <Grid Background="#FFE5E5E5" Margin="0,0,0,-6">
                 <Grid Margin="0,0,0,-3">
-                    <Grid.Background>
+                    <!--<Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF004080" Offset="0"/>
                             <GradientStop Color="#FFABD5FF" Offset="1"/>
                         </LinearGradientBrush>
-                    </Grid.Background>
+                    </Grid.Background>-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Calendar Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top"/>
-                    <ListView Grid.Column="1"></ListView>
+                    <Calendar x:Name="Calendar" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDatesChanged="Calendar_SelectedDatesChanged" Height="166" Width="183"/>
+                    <ListView x:Name="dailySchedule" ItemsSource="{Binding appointments}" Grid.ColumnSpan="2" Margin="198,0,0,0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding RecordType}"/>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding RecordName}"/>
+                                <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding StartTime}"/>
+                                <GridViewColumn Header="End Time" DisplayMemberBinding="{Binding EndTime}"/>
+                                <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}"/>
+                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="test" Content="Button" HorizontalAlignment="Left" Margin="87,306,0,0" VerticalAlignment="Top" Width="75" Click="test_Click"/>
                 </Grid>
             </Grid>
         </TabItem>

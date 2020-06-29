@@ -8,9 +8,15 @@ namespace Forgets
 {
     interface IScheduleRecord
     {
-        string getName();
-        string getLocation();
-        DateTime getStartTime();
-        DateTime getEndTime();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        string RecordType { get; set; }
+        string RecordName { get; set; }
+        string Description { get; set; }
+        string Location { get; set; }
+        DateTime StartTime { get; set; }
+        DateTime EndTime { get; set; }
     }
 }

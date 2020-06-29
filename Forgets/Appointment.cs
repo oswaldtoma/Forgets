@@ -6,26 +6,13 @@ using System.Threading.Tasks;
 
 namespace Forgets
 {
-    class Appointment : IScheduleRecord
+    public class Appointment : IScheduleRecord
     {
-        public DateTime getEndTime()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string getLocation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string getName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DateTime getStartTime()
-        {
-            throw new NotImplementedException();
-        }
+        public string RecordType { get; set; }
+        public string RecordName { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
     }
 }
