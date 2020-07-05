@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,27 @@ namespace Forgets
         {
             InitializeComponent();
             dailySchedule.ItemsSource = schedule.appointments;
+            Calendar.SelectedDate = DateTime.Today;
+            CollectionView collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
+            collectionView.Filter = AppointmentFilter;
             this.DataContext = schedule;
+        }
+
+        private bool AppointmentFilter(object item)
+        {
+            var appointment = item as Appointment;
+
+            if (Calendar.SelectedDate.HasValue)
+            {
+                return appointment.StartTime.Date == Calendar.SelectedDate;
+            }
+            else
+                return false;
         }
 
         private void ListView_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            Console.WriteLine("TAK!");
+            Console.WriteLine("TAK");
         }
 
         private void test_Click(object sender, RoutedEventArgs e)
@@ -41,8 +57,8 @@ namespace Forgets
                 RecordType = "Spotkanie",
                 RecordName = "Meeting z Januszem",
                 Description = "Wypad do Janusza na piwo",
-                StartTime = Convert.ToDateTime("01-06-2020 20:00"),
-                EndTime = Convert.ToDateTime("01-06-2020 23:00"),
+                StartTime = Convert.ToDateTime("01-07-2020 20:00"),
+                EndTime = Convert.ToDateTime("01-07-2020 23:00"),
                 Location = "Andrychów"
                 
             });
@@ -50,10 +66,20 @@ namespace Forgets
 
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            var calendar = sender as Calendar;
+            CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource).Refresh();
+        }
 
-            if(calendar.SelectedDate.HasValue)
-                dailySchedule.ItemsSource = schedule.appointments.Where(x => x.StartTime.Date == calendar.SelectedDate);
+        private void test2_Click(object sender, RoutedEventArgs e)
+        {
+            schedule.appointments.Add(new Appointment()
+            {
+                RecordType = "Wyjście służbowe",
+                RecordName = "Narada wewnętrzna",
+                Description = "Opis",
+                StartTime = Convert.ToDateTime("02-07-2020 20:00"),
+                EndTime = Convert.ToDateTime("02-07-2020 23:00"),
+                Location = "Kraków"
+            });
         }
     }
 }

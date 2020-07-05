@@ -6,11 +6,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace Forgets
 {
-    public class Schedule
+    public class Schedule : INotifyPropertyChanged
     {
         public ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
