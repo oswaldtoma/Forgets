@@ -54,7 +54,6 @@ namespace Forgets
         {
             schedule.appointments.Add(new Appointment()
             {
-                RecordType = "Spotkanie",
                 RecordName = "Meeting z Januszem",
                 Description = "Wypad do Janusza na piwo",
                 StartTime = Convert.ToDateTime("01-07-2020 20:00"),
@@ -72,14 +71,19 @@ namespace Forgets
         private void test2_Click(object sender, RoutedEventArgs e)
         {
             schedule.appointments.Add(new Appointment()
-            {
-                RecordType = "Wyjście służbowe",
+            { 
                 RecordName = "Narada wewnętrzna",
                 Description = "Opis",
                 StartTime = Convert.ToDateTime("02-07-2020 20:00"),
                 EndTime = Convert.ToDateTime("02-07-2020 23:00"),
                 Location = "Kraków"
             });
+        }
+
+        private void NewEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new NewEventWindow();
+            window.ShowDialog();
         }
     }
 }

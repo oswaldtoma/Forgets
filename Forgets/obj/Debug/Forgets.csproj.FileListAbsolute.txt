@@ -13,3 +13,6 @@ C:\Users\Oswald\source\repos\Forgets\Forgets\obj\Debug\Forgets.csproj.CoreCompil
 C:\Users\Oswald\source\repos\Forgets\Forgets\obj\Debug\Forgets.exe
 C:\Users\Oswald\source\repos\Forgets\Forgets\obj\Debug\Forgets.pdb
 C:\Users\Oswald\source\repos\Forgets\Forgets\obj\Debug\Forgets.csprojAssemblyReference.cache
+C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\NewEventWindow.g.cs
+C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\NewEventWindow.baml
+C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\GeneratedInternalTypeHelper.g.cs
