@@ -19,9 +19,32 @@ namespace Forgets
     /// </summary>
     public partial class NewEventWindow : Window
     {
-        public NewEventWindow()
+        private Schedule schedule = new Schedule();
+        public NewEventWindow(ref Schedule schedule)
         {
             InitializeComponent();
+            this.schedule = schedule;
+        }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            schedule.events.Add(new Meeting()
+            {
+                RecordName = NameTextBox.Text,
+                Description = DescriptionTextBox.Text,
+                StartTime = StartTimeDatePicker.SelectedDate.Value,
+                EndTime = EndTimeDatePicker.SelectedDate.Value,
+                Location = LocationTextBox.Text,
+                isImportant = ImportantCheckBox.IsChecked.Value,
+                RemindTime = RemindDatePicker.SelectedDate.Value
+            });
+
+            this.Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

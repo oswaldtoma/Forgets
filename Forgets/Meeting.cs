@@ -3,9 +3,9 @@ using System.Windows.Media;
 
 namespace Forgets
 {
-    public class Appointment : IScheduleRecord
+    public class Meeting : IScheduleRecord
     {
-        public Appointment()
+        public Meeting()
         {
             RecordType = Misc.TEvent.TE_MEETING;
             RecordTypeColor = Color.FromRgb(255,0,0);

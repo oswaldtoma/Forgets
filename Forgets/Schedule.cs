@@ -12,7 +12,7 @@ namespace Forgets
 {
     public class Schedule : INotifyPropertyChanged
     {
-        public ObservableCollection<IScheduleRecord> appointments = new ObservableCollection<IScheduleRecord>();
+        public ObservableCollection<IScheduleRecord> events = new ObservableCollection<IScheduleRecord>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -22,24 +22,24 @@ namespace Forgets
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Schedule schedule = new Schedule();
+        public Schedule schedule = new Schedule();
         public MainWindow()
         {
             InitializeComponent();
-            dailySchedule.ItemsSource = schedule.appointments;
+            dailySchedule.ItemsSource = schedule.events;
             Calendar.SelectedDate = DateTime.Today;
             CollectionView collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
-            collectionView.Filter = AppointmentFilter;
+            collectionView.Filter = EventFilter;
             this.DataContext = schedule;
         }
 
-        private bool AppointmentFilter(object item)
+        private bool EventFilter(object item)
         {
-            var appointment = item as Appointment;
+            var eventVar = item as IScheduleRecord;
 
             if (Calendar.SelectedDate.HasValue)
             {
-                return appointment.StartTime.Date == Calendar.SelectedDate;
+                return eventVar.StartTime.Date == Calendar.SelectedDate;
             }
             else
                 return false;
@@ -52,7 +52,7 @@ namespace Forgets
 
         private void test_Click(object sender, RoutedEventArgs e)
         {
-            schedule.appointments.Add(new Appointment()
+            schedule.events.Add(new Meeting()
             {
                 RecordName = "Meeting z Januszem",
                 Description = "Wypad do Janusza na piwo",
@@ -70,7 +70,7 @@ namespace Forgets
 
         private void test2_Click(object sender, RoutedEventArgs e)
         {
-            schedule.appointments.Add(new Appointment()
+            schedule.events.Add(new Meeting()
             { 
                 RecordName = "Narada wewnętrzna",
                 Description = "Opis",
@@ -82,7 +82,8 @@ namespace Forgets
 
         private void NewEventButton_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new NewEventWindow();
+            Window window = new NewEventWindow(ref schedule);
+            window.DataContext = schedule;
             window.ShowDialog();
         }
     }
