@@ -20,9 +20,100 @@ namespace Forgets
     /// </summary>
     public partial class TimePicker : UserControl
     {
+        DateTime time = new DateTime();
+        private object selectedTextBox;
+
         public TimePicker()
         {
             InitializeComponent();
+            HrTextBox.AddHandler(FrameworkElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(TextBox_MouseLeftButtonDown), true);
+            MinTextBox.AddHandler(FrameworkElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(TextBox_MouseLeftButtonDown), true);
+            SecTextBox.AddHandler(FrameworkElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(TextBox_MouseLeftButtonDown), true);
+            selectedTextBox = HrTextBox;
+        }
+
+        public DateTime getTime() { return time; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var textbox = selectedTextBox as TextBox;
+            var numValue = Convert.ToUInt16(textbox.Text);
+
+            bool isHourTextBox = textbox.Name == "HrTextBox";
+            const ushort hoursUpperBoundary = 23;
+            const ushort otherUpperBoundary = 59;
+            ushort upperBoundary = isHourTextBox ? hoursUpperBoundary : otherUpperBoundary;
+
+            switch (button.Name)
+            {
+                case "IncButton":
+                {
+                    if(numValue < upperBoundary)
+                    {
+                        numValue++;
+                    }
+                    else
+                    {
+                        numValue = 0;
+                    }
+
+                    if(numValue >= 0 && numValue < 10)
+                    {
+                        textbox.Text = $"0{numValue}";
+                    }
+                    else
+                    {
+                        textbox.Text = numValue.ToString();
+                    }
+                }
+                break;
+
+                case "DecButton":
+                {
+                    if (numValue > 0)
+                    {
+                        numValue--;
+                    }
+                    else
+                    {
+                        numValue = upperBoundary;
+                    }
+
+                    if (numValue >= 0 && numValue < 10)
+                    {
+                        textbox.Text = $"0{numValue}";
+                    }
+                    else
+                    {
+                        textbox.Text = numValue.ToString();
+                    }
+                }
+                break;
+            }
+        }
+
+        private void TextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            selectedTextBox = sender;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DateTime time = new DateTime();
+            if (this.IsLoaded)
+            {
+                try
+                {
+                    time = Convert.ToDateTime($"{HrTextBox.Text}:{MinTextBox.Text}:{SecTextBox.Text}");
+                }
+                catch (Exception)
+                {
+                    var textbox = sender as TextBox;
+                    textbox.Clear();
+                }
+
+            }
         }
     }
 }

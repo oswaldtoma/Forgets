@@ -4,16 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Forgets"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="0,0,646,406">
-        <TextBox x:Name="HrTextBox" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="25"/>
-        <TextBox x:Name="MinTextBox" HorizontalAlignment="Left" Height="22" Margin="47,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="25"/>
-        <TextBox x:Name="SecTextBox" HorizontalAlignment="Left" Height="22" Margin="85,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="25"/>
+             mc:Ignorable="d" Height="51.5" Width="165">
+    <Grid>
+        <TextBox x:Name="HrTextBox" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" Text="12" VerticalAlignment="Top" Width="25" MouseLeftButtonDown="TextBox_MouseLeftButtonDown" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="MinTextBox" HorizontalAlignment="Left" Height="22" Margin="47,10,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="25" MouseLeftButtonDown="TextBox_MouseLeftButtonDown" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="SecTextBox" HorizontalAlignment="Left" Height="22" Margin="85,10,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="25" MouseLeftButtonDown="TextBox_MouseLeftButtonDown" TextChanged="TextBox_TextChanged"/>
         <Label Content=":" HorizontalAlignment="Left" Margin="34,6,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.513,0.938"/>
         <Label Content=":" HorizontalAlignment="Left" Margin="72,6,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.513,0.938"/>
-        <Button Content="+" HorizontalAlignment="Left" Margin="115,6,0,0" VerticalAlignment="Top" Width="29" Height="15" RenderTransformOrigin="0.123,0.042"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="115,26,0,0" VerticalAlignment="Top" Width="29" Height="12"/>
+        <Button x:Name="IncButton" Content="+" HorizontalAlignment="Left" Margin="115,6,0,0" VerticalAlignment="Top" Width="29" Height="15" Padding="1,-2,1,1" Click="Button_Click"/>
+        <Button x:Name="DecButton" Content="-" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="29" Height="15" Padding="1,-2,1,1" Click="Button_Click"/>
 
     </Grid>
 </UserControl>

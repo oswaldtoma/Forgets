@@ -29,5 +29,6 @@
         <DatePicker x:Name="StartTimeDatePicker" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long"/>
         <TextBox x:Name="StartTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="10,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="193" Click="CancelButton_Click"/>
+        <local:TimePicker HorizontalAlignment="Left" Height="40" Margin="379,191,0,0" VerticalAlignment="Top" Width="149"/>
     </Grid>
 </Window>
