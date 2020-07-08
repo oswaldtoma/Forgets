@@ -16,19 +16,17 @@
         <Label Content="Remind me at:" HorizontalAlignment="Left" Margin="349,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Important:" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="83,14,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="83,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
-        <TextBox x:Name="DescriptionTextBox" Height="46" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="315"/>
-        <TextBox x:Name="LocationTextBox"  HorizontalAlignment="Left" Height="23" Margin="83,177,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="242"/>
-        <DatePicker x:Name="EndTimeDatePicker" HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" IsTodayHighlighted="True"/>
-        <TextBox x:Name="EndTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="221,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104">
-        </TextBox>
-        <CheckBox x:Name="ImportantCheckBox" HorizontalAlignment="Left" Margin="83,215,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="83,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="DescriptionTextBox" Height="46" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="315" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="LocationTextBox"  HorizontalAlignment="Left" Height="23" Margin="83,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
+        <DatePicker x:Name="EndTimeDatePicker" HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" IsTodayHighlighted="True" AutomationProperties.IsRequiredForForm="True"/>
+        <CheckBox x:Name="ImportantCheckBox" HorizontalAlignment="Left" Margin="83,215,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True"/>
         <DatePicker x:Name="RemindDatePicker" HorizontalAlignment="Left" Margin="349,36,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RemindTime" HorizontalAlignment="Left" Height="23" Margin="349,65,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ConfirmButton" Content="Confirm and finish" HorizontalAlignment="Left" Margin="349,331,0,0" VerticalAlignment="Top" Width="207" Click="ConfirmButton_Click"/>
-        <DatePicker x:Name="StartTimeDatePicker" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long"/>
-        <TextBox x:Name="StartTimeTextBox" HorizontalAlignment="Left" Height="23" Margin="10,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
+        <DatePicker x:Name="StartTimeDatePicker" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" AutomationProperties.IsRequiredForForm="True"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="193" Click="CancelButton_Click"/>
-        <local:TimePicker HorizontalAlignment="Left" Height="40" Margin="379,191,0,0" VerticalAlignment="Top" Width="149"/>
+        <local:TimePicker x:Name="StartTimePicker" HorizontalAlignment="Left" Height="40" Margin="0,286,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.IsRequiredForForm="True"/>
+        <local:TimePicker x:Name="EndTimePicker" HorizontalAlignment="Left" Height="41" Margin="211,285,0,0" VerticalAlignment="Top" Width="148" AutomationProperties.IsRequiredForForm="True"/>
+        <local:TimePicker x:Name="RemindTimePicker" HorizontalAlignment="Left" Height="43" Margin="339,55,0,0" VerticalAlignment="Top" Width="156"/>
     </Grid>
 </Window>

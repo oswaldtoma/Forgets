@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,11 +33,11 @@ namespace Forgets
             {
                 RecordName = NameTextBox.Text,
                 Description = DescriptionTextBox.Text,
-                StartTime = StartTimeDatePicker.SelectedDate.Value,
-                EndTime = EndTimeDatePicker.SelectedDate.Value,
+                StartTime = Convert.ToDateTime($"{StartTimeDatePicker.SelectedDate.Value.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture),
+                EndTime = Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture),
                 Location = LocationTextBox.Text,
                 isImportant = ImportantCheckBox.IsChecked.Value,
-                RemindTime = RemindDatePicker.SelectedDate.Value
+                RemindTime = Convert.ToDateTime($"{RemindDatePicker.SelectedDate.Value.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture),
             });
 
             this.Close();
