@@ -7,10 +7,10 @@ namespace Forgets
     {
         public Meeting()
         {
-            RecordType = Misc.TEvent.TE_MEETING;
+            RecordType = Schedule.TEvent.TE_MEETING;
             RecordTypeColor = Color.FromRgb(255,0,0);
         }
-        public Misc.TEvent RecordType { get; set; }
+        public Schedule.TEvent RecordType { get; set; }
         public string RecordName { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }

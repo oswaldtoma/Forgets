@@ -13,7 +13,7 @@ namespace Forgets
         /// 
         /// </summary>
         /// <returns></returns>
-        Misc.TEvent RecordType { get; set; }
+        Schedule.TEvent RecordType { get; set; }
         string RecordName { get; set; }
         string Description { get; set; }
         string Location { get; set; }

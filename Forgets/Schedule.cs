@@ -12,6 +12,15 @@ namespace Forgets
 {
     public class Schedule : INotifyPropertyChanged
     {
+        public enum TEvent
+        {
+            TE_MEETING,
+            TE_REMINDER,
+            TE_APPOINTMENT,
+            TE_CLASS,
+            TE_EVENT
+        }
+
         public ObservableCollection<IScheduleRecord> events = new ObservableCollection<IScheduleRecord>();
 
         public event PropertyChangedEventHandler PropertyChanged;

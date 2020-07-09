@@ -60,7 +60,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="isTimeValidationRule.cs" />
-    <Compile Include="Misc.cs" />
     <Compile Include="NewEventWindow.xaml.cs">
       <DependentUpon>NewEventWindow.xaml</DependentUpon>
     </Compile>

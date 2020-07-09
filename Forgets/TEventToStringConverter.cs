@@ -12,10 +12,13 @@ namespace Forgets
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch((Misc.TEvent)value)
+            switch((Schedule.TEvent)value)
             {
-                case Misc.TEvent.TE_MEETING: return "Spotkanie";
-                case Misc.TEvent.TE_REMINDER: return "Przypomnienie";
+                case Schedule.TEvent.TE_MEETING: return "Spotkanie";
+                case Schedule.TEvent.TE_REMINDER: return "Przypomnienie";
+                case Schedule.TEvent.TE_APPOINTMENT: return "Wizyta";
+                case Schedule.TEvent.TE_CLASS: return "Zajęcia";
+                case Schedule.TEvent.TE_EVENT: return "Wydarzenie";
                 default: return "Unknown";
             }
         }

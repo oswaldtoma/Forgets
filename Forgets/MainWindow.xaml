@@ -32,8 +32,8 @@
                     <GridView AllowsColumnReorder="False">
                         <GridViewColumn Header="Type" DisplayMemberBinding="{Binding RecordType, Converter={StaticResource TEventToStringConverter}}" Width="Auto"/>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding RecordName}" Width="Auto"/>
-                        <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding StartTime}" Width="Auto"/>
-                        <GridViewColumn Header="End Time" DisplayMemberBinding="{Binding EndTime}" Width="Auto"/>
+                        <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding StartTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto"/>
+                        <GridViewColumn Header="End Time" DisplayMemberBinding="{Binding EndTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto"/>
                         <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}" Width="Auto"/>
                         <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="Auto"/>
                     </GridView>

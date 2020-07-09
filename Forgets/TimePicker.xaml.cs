@@ -100,7 +100,6 @@ namespace Forgets
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            DateTime time = new DateTime();
             if (this.IsLoaded)
             {
                 try
