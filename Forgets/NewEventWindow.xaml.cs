@@ -32,11 +32,14 @@ namespace Forgets
         {
             var recordName = NameTextBox.Text;
             var description = DescriptionTextBox.Text;
-            var startTime = Convert.ToDateTime($"{StartTimeDatePicker.SelectedDate.Value.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
-            var endTime = Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var startDate = StartTimeDatePicker.SelectedDate.Value == null ? Convert.ToDateTime(0) : StartTimeDatePicker.SelectedDate.Value;
+            var startTime = Convert.ToDateTime($"{startDate.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var endTime = (DateTime?)Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
             var location = LocationTextBox.Text;
             var isImportant = ImportantCheckBox.IsChecked.Value;
-            var remindTime = Convert.ToDateTime($"{RemindDatePicker.SelectedDate.Value.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var shouldRemind = RemindCheckbox.IsChecked.Value;
+            var remindDate = RemindDatePicker.SelectedDate.Value;
+            var remindTime = Convert.ToDateTime($"{remindDate.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
 
 
             bool areAllFieldsNotEmpty = false;
@@ -44,6 +47,7 @@ namespace Forgets
             areAllFieldsNotEmpty = !String.IsNullOrEmpty(recordName);
             areAllFieldsNotEmpty &= !String.IsNullOrEmpty(description);
             areAllFieldsNotEmpty &= !String.IsNullOrEmpty(location);
+            areAllFieldsNotEmpty &= shouldRemind;
 
             if (areAllFieldsNotEmpty)
             {
@@ -61,7 +65,68 @@ namespace Forgets
                             isImportant = isImportant,
                             RemindTime = remindTime
                         });
-                    }   
+                    }
+                    break;
+
+                    case "Przypomnienie":
+                    {
+                        schedule.events.Add(new Reminder()
+                        {
+                            RecordName = recordName,
+                            Description = description,
+                            StartTime = startTime,
+                            EndTime = endTime,
+                            Location = location,
+                            isImportant = isImportant,
+                            RemindTime = remindTime
+                        });
+                    }
+                    break;
+
+                    case "Wizyta":
+                    {
+                        schedule.events.Add(new Appointment()
+                        {
+                            RecordName = recordName,
+                            Description = description,
+                            StartTime = startTime,
+                            EndTime = endTime,
+                            Location = location,
+                            isImportant = isImportant,
+                            RemindTime = remindTime
+                        });
+                    }
+                    break;
+
+                    case "Zajęcia":
+                    {
+                        schedule.events.Add(new Class()
+                        {
+                            RecordName = recordName,
+                            Description = description,
+                            StartTime = startTime,
+                            EndTime = endTime,
+                            Location = location,
+                            isImportant = isImportant,
+                            RemindTime = remindTime
+                        });
+                    }
+                    break;
+
+                    case "Zdarzenie":
+                    {
+                        schedule.events.Add(new Event()
+                        {
+                            RecordName = recordName,
+                            Description = description,
+                            StartTime = startTime,
+                            EndTime = endTime,
+                            Location = location,
+                            isImportant = isImportant,
+                            RemindTime = remindTime
+                        });
+                    }
+                    break;
                 }
                 this.Close();
             }

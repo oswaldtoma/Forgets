@@ -14,9 +14,9 @@ namespace Forgets
         public string RecordName { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public DateTime RemindTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime? RemindTime { get; set; }
         public Color RecordTypeColor { get; set; }
         public bool isImportant { get; set; }
     }

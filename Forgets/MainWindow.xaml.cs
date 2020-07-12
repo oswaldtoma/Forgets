@@ -39,7 +39,7 @@ namespace Forgets
 
             if (Calendar.SelectedDate.HasValue)
             {
-                return eventVar.StartTime.Date == Calendar.SelectedDate;
+                return eventVar.StartTime.Value == Calendar.SelectedDate;
             }
             else
                 return false;
