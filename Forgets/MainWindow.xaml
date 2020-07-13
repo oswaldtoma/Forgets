@@ -39,9 +39,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button x:Name="test" Content="Test1" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="75" Click="test_Click"/>
-            <Button x:Name="test2" Content="Test2" HorizontalAlignment="Left" Margin="105,270,0,0" VerticalAlignment="Top" Width="75" Click="test2_Click"/>
             <Button x:Name="newEventButton" Content="Add new event" HorizontalAlignment="Left" Margin="25,196,0,0" VerticalAlignment="Top" Width="155" Height="30" Click="NewEventButton_Click"/>
+            <Button x:Name="removeEventButton" Content="Remove selected event" HorizontalAlignment="Left" Margin="25,231,0,0" VerticalAlignment="Top" Width="155" Height="30" Click="removeEventButton_Click"/>
         </Grid>
     </Grid>
 </Window>

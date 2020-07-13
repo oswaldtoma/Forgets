@@ -14,11 +14,11 @@ namespace Forgets
         {
             switch((Schedule.TEvent)value)
             {
-                case Schedule.TEvent.TE_MEETING: return "Spotkanie";
-                case Schedule.TEvent.TE_REMINDER: return "Przypomnienie";
-                case Schedule.TEvent.TE_APPOINTMENT: return "Wizyta";
-                case Schedule.TEvent.TE_CLASS: return "Zajęcia";
-                case Schedule.TEvent.TE_EVENT: return "Wydarzenie";
+                case Schedule.TEvent.TE_MEETING: return "Meeting";
+                case Schedule.TEvent.TE_REMINDER: return "Reminder";
+                case Schedule.TEvent.TE_APPOINTMENT: return "Appointment";
+                case Schedule.TEvent.TE_CLASS: return "Class";
+                case Schedule.TEvent.TE_EVENT: return "Event";
                 default: return "Unknown";
             }
         }

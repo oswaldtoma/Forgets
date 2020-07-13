@@ -26,20 +26,21 @@ namespace Forgets
         {
             InitializeComponent();
             this.schedule = schedule;
+            StartTimeDatePicker.SelectedDate = DateTime.Now;
+            EndTimeDatePicker.SelectedDate = DateTime.Now;
+            RemindDatePicker.SelectedDate = DateTime.Now.AddDays(-1);
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             var recordName = NameTextBox.Text;
             var description = DescriptionTextBox.Text;
-            var startDate = StartTimeDatePicker.SelectedDate.Value == null ? Convert.ToDateTime(0) : StartTimeDatePicker.SelectedDate.Value;
-            var startTime = Convert.ToDateTime($"{startDate.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
-            var endTime = (DateTime?)Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var startTime = Convert.ToDateTime($"{StartTimeDatePicker.SelectedDate.Value.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var endTime = Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
             var location = LocationTextBox.Text;
             var isImportant = ImportantCheckBox.IsChecked.Value;
             var shouldRemind = RemindCheckbox.IsChecked.Value;
-            var remindDate = RemindDatePicker.SelectedDate.Value;
-            var remindTime = Convert.ToDateTime($"{remindDate.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var remindTime = Convert.ToDateTime($"{RemindDatePicker.SelectedDate.Value.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
 
 
             bool areAllFieldsNotEmpty = false;
@@ -47,13 +48,13 @@ namespace Forgets
             areAllFieldsNotEmpty = !String.IsNullOrEmpty(recordName);
             areAllFieldsNotEmpty &= !String.IsNullOrEmpty(description);
             areAllFieldsNotEmpty &= !String.IsNullOrEmpty(location);
-            areAllFieldsNotEmpty &= shouldRemind;
+            areAllFieldsNotEmpty &= EventType.SelectedIndex != -1;
 
             if (areAllFieldsNotEmpty)
             {
-                switch(EventType.Text)
+                switch(EventType.SelectedIndex)
                 {
-                    case "Spotkanie":
+                    case (int)Schedule.TEvent.TE_MEETING:
                     {
                         schedule.events.Add(new Meeting()
                         {
@@ -68,7 +69,7 @@ namespace Forgets
                     }
                     break;
 
-                    case "Przypomnienie":
+                    case (int)Schedule.TEvent.TE_REMINDER:
                     {
                         schedule.events.Add(new Reminder()
                         {
@@ -83,7 +84,7 @@ namespace Forgets
                     }
                     break;
 
-                    case "Wizyta":
+                    case (int)Schedule.TEvent.TE_APPOINTMENT:
                     {
                         schedule.events.Add(new Appointment()
                         {
@@ -98,7 +99,7 @@ namespace Forgets
                     }
                     break;
 
-                    case "Zajęcia":
+                    case (int)Schedule.TEvent.TE_CLASS:
                     {
                         schedule.events.Add(new Class()
                         {
@@ -113,7 +114,7 @@ namespace Forgets
                     }
                     break;
 
-                    case "Zdarzenie":
+                    case (int)Schedule.TEvent.TE_EVENT:
                     {
                         schedule.events.Add(new Event()
                         {
@@ -129,6 +130,10 @@ namespace Forgets
                     break;
                 }
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Make sure all required fields are filled!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

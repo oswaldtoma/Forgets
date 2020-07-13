@@ -86,5 +86,15 @@ namespace Forgets
             window.DataContext = schedule;
             window.ShowDialog();
         }
+
+        private void removeEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedRecords = dailySchedule.SelectedItems.Cast<IScheduleRecord>().ToList();
+
+            foreach (var item in selectedRecords)
+            {
+                schedule.events.Remove(item);
+            }
+        }
     }
 }
