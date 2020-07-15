@@ -21,8 +21,6 @@ namespace Forgets
             TE_EVENT
         }
 
-        public ObservableCollection<IScheduleRecord> events = new ObservableCollection<IScheduleRecord>();
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -30,5 +28,19 @@ namespace Forgets
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public ObservableCollection<IScheduleRecord> events = new ObservableCollection<IScheduleRecord>();
+
+        public string RecordName { get; set; }
+        public string Description { get; set; }
+        public DateTime? StartDate { get; set; }
+        public string StartTime { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string EndTime { get; set; }
+        public string Location { get; set; }
+        public bool isImportant { get; set; }
+        public bool shouldRemind { get; set; }
+        public DateTime? remindDate { get; set; }
+        public string remindTime { get; set; }
     }
 }

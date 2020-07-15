@@ -29,6 +29,7 @@ namespace Forgets
             StartTimeDatePicker.SelectedDate = DateTime.Now;
             EndTimeDatePicker.SelectedDate = DateTime.Now;
             RemindDatePicker.SelectedDate = DateTime.Now.AddDays(-1);
+            this.DataContext = schedule;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
