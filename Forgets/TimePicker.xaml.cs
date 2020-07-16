@@ -20,7 +20,6 @@ namespace Forgets
     /// </summary>
     public partial class TimePicker : UserControl
     {
-        DateTime time = new DateTime();
         private object selectedTextBox;
 
         public TimePicker()
@@ -32,8 +31,10 @@ namespace Forgets
             selectedTextBox = HrTextBox;
         }
 
-        public DateTime getTime() { return time; }
+        public DateTime Time { get; set; } = DateTime.Now;
 
+        public static DependencyProperty TimeProperty =
+            DependencyProperty.Register("Time", typeof(int), typeof(TimePicker));
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -104,7 +105,7 @@ namespace Forgets
             {
                 try
                 {
-                    time = Convert.ToDateTime($"{HrTextBox.Text}:{MinTextBox.Text}:{SecTextBox.Text}");
+                    Time = Convert.ToDateTime($"{HrTextBox.Text}:{MinTextBox.Text}:{SecTextBox.Text}");
                 }
                 catch (Exception)
                 {

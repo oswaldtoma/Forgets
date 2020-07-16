@@ -22,18 +22,18 @@
             <ComboBoxItem>Class</ComboBoxItem>
             <ComboBoxItem>Event</ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="83,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
-        <TextBox x:Name="DescriptionTextBox" Height="46" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="315" AutomationProperties.IsRequiredForForm="True"/>
-        <TextBox x:Name="LocationTextBox"  HorizontalAlignment="Left" Height="23" Margin="83,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
-        <DatePicker x:Name="EndTimeDatePicker" HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" IsTodayHighlighted="True" AutomationProperties.IsRequiredForForm="True"/>
-        <CheckBox x:Name="ImportantCheckBox" HorizontalAlignment="Left" Margin="83,215,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True"/>
-        <DatePicker x:Name="RemindDatePicker" IsEnabled="{Binding ElementName=RemindCheckbox, Path=IsChecked}" HorizontalAlignment="Left" Margin="359,67,0,0" VerticalAlignment="Top" SelectedDateFormat="Long"/>
+        <TextBox x:Name="NameTextBox" Text="{Binding RecordName}" HorizontalAlignment="Left" Height="23" Margin="83,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="DescriptionTextBox" Text="{Binding Description}" Height="46" Margin="10,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="315" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="LocationTextBox"  Text="{Binding Location}" HorizontalAlignment="Left" Height="23" Margin="83,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" AutomationProperties.IsRequiredForForm="True"/>
+        <DatePicker x:Name="EndTimeDatePicker" SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" IsTodayHighlighted="True" AutomationProperties.IsRequiredForForm="True"/>
+        <CheckBox x:Name="ImportantCheckBox" IsChecked="{Binding isImportant}" HorizontalAlignment="Left" Margin="83,215,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True"/>
+        <DatePicker x:Name="RemindDatePicker" SelectedDate="{Binding RemindDate}" IsEnabled="{Binding ElementName=RemindCheckbox, Path=IsChecked}" HorizontalAlignment="Left" Margin="359,67,0,0" VerticalAlignment="Top" SelectedDateFormat="Long"/>
         <Button x:Name="ConfirmButton" Content="Confirm and finish" HorizontalAlignment="Left" Margin="349,331,0,0" VerticalAlignment="Top" Width="207" Click="ConfirmButton_Click"/>
-        <DatePicker x:Name="StartTimeDatePicker" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" AutomationProperties.IsRequiredForForm="True"/>
+        <DatePicker x:Name="StartTimeDatePicker" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" AutomationProperties.IsRequiredForForm="True"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="193" Click="CancelButton_Click"/>
-        <local:TimePicker x:Name="StartTimePicker" HorizontalAlignment="Left" Height="40" Margin="0,286,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.IsRequiredForForm="True"/>
-        <local:TimePicker x:Name="EndTimePicker" HorizontalAlignment="Left" Height="41" Margin="211,285,0,0" VerticalAlignment="Top" Width="148" AutomationProperties.IsRequiredForForm="True"/>
-        <local:TimePicker x:Name="RemindTimePicker" IsEnabled="{Binding ElementName=RemindCheckbox, Path=IsChecked}" HorizontalAlignment="Left" Height="43" Margin="349,86,0,0" VerticalAlignment="Top" Width="156"/>
-        <CheckBox x:Name="RemindCheckbox" Content="Remind me" HorizontalAlignment="Left" Margin="359,24,0,0" VerticalAlignment="Top"/>
+        <local:TimePicker x:Name="StartTimePicker" Time="{Binding StartTime}" HorizontalAlignment="Left" Height="40" Margin="0,286,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.IsRequiredForForm="True"/>
+        <local:TimePicker x:Name="EndTimePicker" Time="{Binding EndTime}" HorizontalAlignment="Left" Height="41" Margin="211,285,0,0" VerticalAlignment="Top" Width="148" AutomationProperties.IsRequiredForForm="True"/>
+        <local:TimePicker x:Name="RemindTimePicker" Time="{Binding RemindTime}" IsEnabled="{Binding ElementName=RemindCheckbox, Path=IsChecked}" HorizontalAlignment="Left" Height="43" Margin="349,86,0,0" VerticalAlignment="Top" Width="156"/>
+        <CheckBox x:Name="RemindCheckbox" IsChecked="{Binding ShouldRemind}" Content="Remind me" HorizontalAlignment="Left" Margin="359,24,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

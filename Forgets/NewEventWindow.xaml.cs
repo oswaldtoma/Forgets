@@ -34,14 +34,14 @@ namespace Forgets
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            var recordName = NameTextBox.Text;
-            var description = DescriptionTextBox.Text;
-            var startTime = Convert.ToDateTime($"{StartTimeDatePicker.SelectedDate.Value.ToShortDateString()} {StartTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
-            var endTime = Convert.ToDateTime($"{EndTimeDatePicker.SelectedDate.Value.ToShortDateString()} {EndTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
-            var location = LocationTextBox.Text;
-            var isImportant = ImportantCheckBox.IsChecked.Value;
-            var shouldRemind = RemindCheckbox.IsChecked.Value;
-            var remindTime = Convert.ToDateTime($"{RemindDatePicker.SelectedDate.Value.ToShortDateString()} {RemindTimePicker.getTime().ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var recordName = schedule.RecordName;
+            var description = schedule.Description;
+            var startTime = Convert.ToDateTime($"{schedule.StartDate.Value.ToShortDateString()} {StartTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var endTime = Convert.ToDateTime($"{schedule.EndDate.Value.ToShortDateString()} {EndTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+            var location = schedule.Location;
+            var isImportant = schedule.IsImportant;
+            var shouldRemind = schedule.ShouldRemind;
+            var remindTime = Convert.ToDateTime($"{schedule.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
 
 
             bool areAllFieldsNotEmpty = false;
