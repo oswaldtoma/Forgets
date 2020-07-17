@@ -31,10 +31,21 @@ namespace Forgets
             selectedTextBox = HrTextBox;
         }
 
-        public DateTime Time { get; set; } = DateTime.Now;
+        public DateTime Time
+        {
+            get
+            {
+                return (DateTime)GetValue(TimeProperty);
+            }
+            set
+            {
+                SetValue(TimeProperty, value);
+                //Time = value; 
+            }
+        }
 
         public static DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(int), typeof(TimePicker));
+            DependencyProperty.Register("Time", typeof(DateTime), typeof(TimePicker), new PropertyMetadata(Convert.ToDateTime("12:00")));
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
