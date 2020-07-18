@@ -39,7 +39,7 @@ namespace Forgets
 
             if (Calendar.SelectedDate.HasValue)
             {
-                return eventVar.StartTime.Value == Calendar.SelectedDate;
+                return eventVar.StartTime.Value.ToShortDateString() == Calendar.SelectedDate.Value.ToShortDateString();
             }
             else
                 return false;
@@ -95,6 +95,11 @@ namespace Forgets
             {
                 schedule.events.Remove(item);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            test2_Click(sender, e);
         }
     }
 }

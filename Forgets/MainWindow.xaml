@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Calendar x:Name="Calendar" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDatesChanged="Calendar_SelectedDatesChanged" Height="166" Width="183"/>
-            <ListView x:Name="dailySchedule" ItemsSource="{Binding appointments}" Grid.ColumnSpan="2" Margin="198,0,0,0">
+            <ListView x:Name="dailySchedule" ItemsSource="{Binding events}" Grid.ColumnSpan="2" Margin="198,0,0,0">
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -41,6 +41,7 @@
             </ListView>
             <Button x:Name="newEventButton" Content="Add new event" HorizontalAlignment="Left" Margin="25,196,0,0" VerticalAlignment="Top" Width="155" Height="30" Click="NewEventButton_Click"/>
             <Button x:Name="removeEventButton" Content="Remove selected event" HorizontalAlignment="Left" Margin="25,231,0,0" VerticalAlignment="Top" Width="155" Height="30" Click="removeEventButton_Click"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

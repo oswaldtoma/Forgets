@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="isTimeValidationRule.cs" />
+    <Compile Include="NewEvent.cs" />
     <Compile Include="ScheduleRecords\Appointment.cs" />
     <Compile Include="ScheduleRecords\Class.cs" />
     <Compile Include="ScheduleRecords\Event.cs" />

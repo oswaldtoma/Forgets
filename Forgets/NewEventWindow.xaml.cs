@@ -22,6 +22,7 @@ namespace Forgets
     public partial class NewEventWindow : Window
     {
         private Schedule schedule = new Schedule();
+        private NewEvent newEvent = new NewEvent();
         public NewEventWindow(ref Schedule schedule)
         {
             InitializeComponent();
@@ -29,21 +30,37 @@ namespace Forgets
             StartTimeDatePicker.SelectedDate = DateTime.Now;
             EndTimeDatePicker.SelectedDate = DateTime.Now;
             RemindDatePicker.SelectedDate = DateTime.Now.AddDays(-1);
-            this.DataContext = schedule;
+            this.DataContext = newEvent;
+            ClearAllProperties();
+        }
+
+        private void ClearAllProperties()
+        {
+            newEvent.RecordName = "";
+            newEvent.Description = "";
+            newEvent.StartDate = null;
+            newEvent.StartTime = null;
+            newEvent.EndDate = null;
+            newEvent.EndTime = null;
+            newEvent.Location = "";
+            newEvent.IsImportant = false;
+            newEvent.ShouldRemind = false;
+            newEvent.RemindDate = null;
+            newEvent.RemindTime = null;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var recordName = schedule.RecordName;
-                var description = schedule.Description;
-                var startTime = Convert.ToDateTime($"{schedule.StartDate.Value.ToShortDateString()} {StartTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
-                var endTime = Convert.ToDateTime($"{schedule.EndDate.Value.ToShortDateString()} {EndTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
-                var location = schedule.Location;
-                var isImportant = schedule.IsImportant;
-                var shouldRemind = schedule.ShouldRemind;
-                var remindTime = Convert.ToDateTime($"{schedule.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+                var recordName = newEvent.RecordName;
+                var description = newEvent.Description;
+                var startTime = Convert.ToDateTime($"{newEvent.StartDate.Value.ToShortDateString()} {StartTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+                var endTime = Convert.ToDateTime($"{newEvent.EndDate.Value.ToShortDateString()} {EndTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+                var location = newEvent.Location;
+                var isImportant = newEvent.IsImportant;
+                var shouldRemind = newEvent.ShouldRemind;
+                var remindTime = Convert.ToDateTime($"{newEvent.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
 
                 bool areAllFieldsNotEmpty = false;
 
