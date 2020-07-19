@@ -40,12 +40,11 @@ namespace Forgets
             set
             {
                 SetValue(TimeProperty, value);
-                //Time = value; 
             }
         }
 
         public static DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(DateTime), typeof(TimePicker), new PropertyMetadata(Convert.ToDateTime("12:00")));
+            DependencyProperty.Register("Time", typeof(DateTime), typeof(TimePicker), new PropertyMetadata(Convert.ToDateTime("12:00:00")));
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;

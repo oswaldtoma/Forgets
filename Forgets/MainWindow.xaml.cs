@@ -83,7 +83,6 @@ namespace Forgets
         private void NewEventButton_Click(object sender, RoutedEventArgs e)
         {
             Window window = new NewEventWindow(ref schedule);
-            window.DataContext = schedule;
             window.ShowDialog();
         }
 

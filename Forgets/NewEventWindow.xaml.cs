@@ -31,7 +31,7 @@ namespace Forgets
             EndTimeDatePicker.SelectedDate = DateTime.Now;
             RemindDatePicker.SelectedDate = DateTime.Now.AddDays(-1);
             this.DataContext = newEvent;
-            ClearAllProperties();
+            //ClearAllProperties();
         }
 
         private void ClearAllProperties()
@@ -60,7 +60,10 @@ namespace Forgets
                 var location = newEvent.Location;
                 var isImportant = newEvent.IsImportant;
                 var shouldRemind = newEvent.ShouldRemind;
-                var remindTime = Convert.ToDateTime($"{newEvent.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
+                var remindTime = new DateTime();
+                
+                if(shouldRemind)
+                    remindTime = Convert.ToDateTime($"{newEvent.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
 
                 bool areAllFieldsNotEmpty = false;
 
