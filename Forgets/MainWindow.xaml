@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Forgets"
         mc:Ignorable="d"
-        Title="Forgets" Height="450" Width="800">
+        Title="Forgets" Height="450" Width="800" StateChanged="Window_StateChanged">
     <Window.Resources>
         <local:TEventToStringConverter x:Key="TEventToStringConverter"/>
     </Window.Resources>

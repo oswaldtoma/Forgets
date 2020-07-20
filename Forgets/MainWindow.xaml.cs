@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Forgets
 {
@@ -31,6 +36,27 @@ namespace Forgets
             CollectionView collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
             collectionView.Filter = EventFilter;
             this.DataContext = schedule;
+
+            NotifyIcon trayIcon = new NotifyIcon();
+            trayIcon.Icon = new Icon("icon.ico");
+            trayIcon.Visible = true;
+            trayIcon.DoubleClick += TrayIcon_DoubleClick;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            var recordToRemind = schedule.events.Where(x => x.StartTime == DateTime.Now);
+        }
+
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = WindowState.Normal;
         }
 
         private bool EventFilter(object item)
@@ -99,6 +125,12 @@ namespace Forgets
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             test2_Click(sender, e);
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+                this.Hide();
         }
     }
 }
