@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -28,6 +29,10 @@ namespace Forgets
     public partial class MainWindow : Window
     {
         public Schedule schedule = new Schedule();
+        NotifyIcon trayIcon = new NotifyIcon();
+
+        int prevMinutes = DateTime.Now;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,20 +42,42 @@ namespace Forgets
             collectionView.Filter = EventFilter;
             this.DataContext = schedule;
 
-            NotifyIcon trayIcon = new NotifyIcon();
             trayIcon.Icon = new Icon("icon.ico");
             trayIcon.Visible = true;
             trayIcon.DoubleClick += TrayIcon_DoubleClick;
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            var recordToRemind = schedule.events.Where(x => x.StartTime == DateTime.Now);
+            IScheduleRecord recordToRemind = null; 
+
+            if(prevMinutes != DateTime.Now.Minute)
+            {
+                recordToRemind = schedule.events.Where(x => x.RemindTime == DateTime.Now).FirstOrDefault();
+            }
+
+            prevMinutes = DateTime.Now.Minute;
+
+            if (recordToRemind != null)
+            {
+                var title = TEventToStringConverter.Convert(recordToRemind.RecordType).ToString();
+
+                if (recordToRemind.isImportant)
+                {
+                    title = $"Important {title.ToLower()}";
+                }
+
+                var text = $"{recordToRemind.RecordName} \n" +
+                    $"{recordToRemind.Description} \n" +
+                    $"Start Time: {recordToRemind.StartTime}";
+
+                trayIcon.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+            }
         }
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)

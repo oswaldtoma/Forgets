@@ -27,5 +27,9 @@ namespace Forgets
         {
             throw new NotImplementedException();
         }
+        static public object Convert(object value)
+        {
+            return new TEventToStringConverter().Convert(value, null, null, CultureInfo.CurrentCulture);
+        }
     }
 }
