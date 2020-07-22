@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +19,10 @@ namespace Forgets
     /// <summary>
     /// Logika interakcji dla klasy TimePicker.xaml
     /// </summary>
-    public partial class TimePicker : UserControl
+    public partial class TimePicker : UserControl, INotifyPropertyChanged
     {
         private object selectedTextBox;
-
+        
         public TimePicker()
         {
             InitializeComponent();
@@ -29,6 +30,9 @@ namespace Forgets
             MinTextBox.AddHandler(FrameworkElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(TextBox_MouseLeftButtonDown), true);
             SecTextBox.AddHandler(FrameworkElement.MouseLeftButtonDownEvent, new MouseButtonEventHandler(TextBox_MouseLeftButtonDown), true);
             selectedTextBox = HrTextBox;
+            PropertyChanged += ShowSeconds_Changed;
+            SecTextBox.Visibility = ShowSeconds ? Visibility.Visible : Visibility.Hidden;
+            SecLabel.Visibility = ShowSeconds ? Visibility.Visible : Visibility.Hidden;
         }
 
         public DateTime Time
@@ -43,8 +47,39 @@ namespace Forgets
             }
         }
 
+        public bool ShowSeconds
+        {
+            get
+            {
+                return (bool)GetValue(ShowSecondsProperty);
+            }
+            set
+            {
+                SetValue(ShowSecondsProperty, value);
+                OnPropertyChanged("ShowSeconds");
+            }
+        }
+
         public static DependencyProperty TimeProperty =
             DependencyProperty.Register("Time", typeof(DateTime), typeof(TimePicker), new PropertyMetadata(Convert.ToDateTime("12:00:00")));
+
+        public static DependencyProperty ShowSecondsProperty =
+            DependencyProperty.Register("ShowSeconds", typeof(bool), typeof(TimePicker), new PropertyMetadata(false));
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ShowSeconds_Changed(object sender, PropertyChangedEventArgs e)
+        {
+            SecTextBox.Visibility = ShowSeconds ? Visibility.Visible : Visibility.Hidden;
+            SecLabel.Visibility = ShowSeconds ? Visibility.Visible : Visibility.Hidden;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;

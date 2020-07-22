@@ -10,7 +10,7 @@
         <TextBox x:Name="MinTextBox" HorizontalAlignment="Left" Height="22" Margin="47,10,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="25" MouseLeftButtonDown="TextBox_MouseLeftButtonDown" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="SecTextBox" HorizontalAlignment="Left" Height="22" Margin="85,10,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="25" MouseLeftButtonDown="TextBox_MouseLeftButtonDown" TextChanged="TextBox_TextChanged"/>
         <Label Content=":" HorizontalAlignment="Left" Margin="34,6,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.513,0.938"/>
-        <Label Content=":" HorizontalAlignment="Left" Margin="72,6,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.513,0.938"/>
+        <Label x:Name="SecLabel" Content=":" HorizontalAlignment="Left" Margin="72,6,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.513,0.938"/>
         <Button x:Name="IncButton" Content="+" HorizontalAlignment="Left" Margin="115,6,0,0" VerticalAlignment="Top" Width="29" Height="15" Padding="1,-2,1,1" Click="Button_Click"/>
         <Button x:Name="DecButton" Content="-" HorizontalAlignment="Left" Margin="115,23,0,0" VerticalAlignment="Top" Width="29" Height="15" Padding="1,-2,1,1" Click="Button_Click"/>
 

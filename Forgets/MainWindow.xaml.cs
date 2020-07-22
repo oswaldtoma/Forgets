@@ -31,7 +31,7 @@ namespace Forgets
         public Schedule schedule = new Schedule();
         NotifyIcon trayIcon = new NotifyIcon();
 
-        int prevMinutes = DateTime.Now;
+        int prevMinutes = DateTime.Now.Minute;
 
         public MainWindow()
         {
@@ -50,6 +50,8 @@ namespace Forgets
             timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            this.WindowState = WindowState.Minimized;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace Forgets
 
             if(prevMinutes != DateTime.Now.Minute)
             {
-                recordToRemind = schedule.events.Where(x => x.RemindTime == DateTime.Now).FirstOrDefault();
+                recordToRemind = schedule.events.Where(x => x.RemindTime == Convert.ToDateTime($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}")).FirstOrDefault();
             }
 
             prevMinutes = DateTime.Now.Minute;
@@ -74,7 +76,7 @@ namespace Forgets
 
                 var text = $"{recordToRemind.RecordName} \n" +
                     $"{recordToRemind.Description} \n" +
-                    $"Start Time: {recordToRemind.StartTime}";
+                    $"Start Time: {recordToRemind.StartTime.Value.ToString("dd.MM.yyyy hh:mm")}";
 
                 trayIcon.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
             }
