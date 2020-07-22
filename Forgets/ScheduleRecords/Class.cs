@@ -18,6 +18,7 @@ namespace Forgets
         public DateTime? EndTime { get; set; }
         public DateTime? RemindTime { get; set; }
         public Color RecordTypeColor { get; set; }
-        public bool isImportant { get; set; }
+        public bool IsImportant { get; set; }
+        public bool ShouldRemind { get; set; }
     }
 }

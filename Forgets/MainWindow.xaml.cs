@@ -36,7 +36,7 @@ namespace Forgets
         public MainWindow()
         {
             InitializeComponent();
-            dailySchedule.ItemsSource = schedule.events;
+            dailySchedule.ItemsSource = schedule.Events;
             Calendar.SelectedDate = DateTime.Today;
             CollectionView collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
             collectionView.Filter = EventFilter;
@@ -52,6 +52,7 @@ namespace Forgets
             timer.Start();
 
             this.WindowState = WindowState.Minimized;
+            this.Hide();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace Forgets
 
             if(prevMinutes != DateTime.Now.Minute)
             {
-                recordToRemind = schedule.events.Where(x => x.RemindTime == Convert.ToDateTime($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}")).FirstOrDefault();
+                recordToRemind = schedule.Events.Where(x => x.RemindTime == Convert.ToDateTime($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}")).FirstOrDefault();
             }
 
             prevMinutes = DateTime.Now.Minute;
@@ -69,7 +70,7 @@ namespace Forgets
             {
                 var title = TEventToStringConverter.Convert(recordToRemind.RecordType).ToString();
 
-                if (recordToRemind.isImportant)
+                if (recordToRemind.IsImportant)
                 {
                     title = $"Important {title.ToLower()}";
                 }
@@ -100,39 +101,9 @@ namespace Forgets
                 return false;
         }
 
-        private void ListView_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            Console.WriteLine("TAK");
-        }
-
-        private void test_Click(object sender, RoutedEventArgs e)
-        {
-            schedule.events.Add(new Meeting()
-            {
-                RecordName = "Meeting z Januszem",
-                Description = "Wypad do Janusza na piwo",
-                StartTime = Convert.ToDateTime("01-07-2020 20:00"),
-                EndTime = Convert.ToDateTime("01-07-2020 23:00"),
-                Location = "Andrychów"
-                
-            });
-        }
-
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource).Refresh();
-        }
-
-        private void test2_Click(object sender, RoutedEventArgs e)
-        {
-            schedule.events.Add(new Meeting()
-            { 
-                RecordName = "Narada wewnętrzna",
-                Description = "Opis",
-                StartTime = Convert.ToDateTime("02-07-2020 20:00"),
-                EndTime = Convert.ToDateTime("02-07-2020 23:00"),
-                Location = "Kraków"
-            });
         }
 
         private void NewEventButton_Click(object sender, RoutedEventArgs e)
@@ -147,13 +118,8 @@ namespace Forgets
 
             foreach (var item in selectedRecords)
             {
-                schedule.events.Remove(item);
+                schedule.Events.Remove(item);
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            test2_Click(sender, e);
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

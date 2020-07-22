@@ -37,3 +37,11 @@ C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.csproj.GenerateReso
 C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.exe
 C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.pdb
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\EntityFramework.dll
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\EntityFramework.xml
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\Forgets.csproj.CopyComplete
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\ForgetsDb.mdf
+C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\ForgetsDb_log.ldf
+C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\Forgets_Content.g.cs

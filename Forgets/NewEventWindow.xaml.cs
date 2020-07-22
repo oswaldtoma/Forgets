@@ -31,22 +31,6 @@ namespace Forgets
             EndTimeDatePicker.SelectedDate = DateTime.Now;
             RemindDatePicker.SelectedDate = DateTime.Now.AddDays(-1);
             this.DataContext = newEvent;
-            //ClearAllProperties();
-        }
-
-        private void ClearAllProperties()
-        {
-            newEvent.RecordName = "";
-            newEvent.Description = "";
-            newEvent.StartDate = null;
-            newEvent.StartTime = null;
-            newEvent.EndDate = null;
-            newEvent.EndTime = null;
-            newEvent.Location = "";
-            newEvent.IsImportant = false;
-            newEvent.ShouldRemind = false;
-            newEvent.RemindDate = null;
-            newEvent.RemindTime = null;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -78,75 +62,80 @@ namespace Forgets
                     {
                         case (int)Schedule.TEvent.TE_MEETING:
                         {
-                            schedule.events.Add(new Meeting()
+                            schedule.Events.Add(new Meeting()
                             {
                                 RecordName = recordName,
                                 Description = description,
                                 StartTime = startTime,
                                 EndTime = endTime,
                                 Location = location,
-                                isImportant = isImportant,
-                                RemindTime = remindTime
+                                IsImportant = isImportant,
+                                RemindTime = remindTime,
+                                ShouldRemind = shouldRemind
                             });
                         }
                         break;
 
                         case (int)Schedule.TEvent.TE_REMINDER:
                         {
-                            schedule.events.Add(new Reminder()
+                            schedule.Events.Add(new Reminder()
                             {
                                 RecordName = recordName,
                                 Description = description,
                                 StartTime = startTime,
                                 EndTime = endTime,
                                 Location = location,
-                                isImportant = isImportant,
-                                RemindTime = remindTime
+                                IsImportant = isImportant,
+                                RemindTime = remindTime,
+                                ShouldRemind = shouldRemind
                             });
                         }
                         break;
 
                         case (int)Schedule.TEvent.TE_APPOINTMENT:
                         {
-                            schedule.events.Add(new Appointment()
+                            schedule.Events.Add(new Appointment()
                             {
                                 RecordName = recordName,
                                 Description = description,
                                 StartTime = startTime,
                                 EndTime = endTime,
                                 Location = location,
-                                isImportant = isImportant,
-                                RemindTime = remindTime
+                                IsImportant = isImportant,
+                                RemindTime = remindTime,
+                                ShouldRemind = shouldRemind
                             });
                         }
                         break;
 
                         case (int)Schedule.TEvent.TE_CLASS:
                         {
-                            schedule.events.Add(new Class()
+                            schedule.Events.Add(new Class()
                             {
                                 RecordName = recordName,
                                 Description = description,
                                 StartTime = startTime,
                                 EndTime = endTime,
                                 Location = location,
-                                isImportant = isImportant,
-                                RemindTime = remindTime
+                                IsImportant = isImportant,
+                                RemindTime = remindTime,
+                                ShouldRemind = shouldRemind
                             });
                         }
                         break;
 
                         case (int)Schedule.TEvent.TE_EVENT:
                         {
-                            schedule.events.Add(new Event()
+                            schedule.Events.Add(new Event()
                             {
                                 RecordName = recordName,
                                 Description = description,
                                 StartTime = startTime,
                                 EndTime = endTime,
                                 Location = location,
-                                isImportant = isImportant,
-                                RemindTime = remindTime
+                                IsImportant = isImportant,
+                                RemindTime = remindTime,
+                                ShouldRemind = shouldRemind
                             });
                         }
                         break;
@@ -158,7 +147,7 @@ namespace Forgets
                     MessageBox.Show("Make sure all required fields are filled!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 MessageBox.Show("Make sure all required fields are filled!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
