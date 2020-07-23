@@ -21,7 +21,7 @@ namespace Forgets
     /// </summary>
     public partial class NewEventWindow : Window
     {
-        private Schedule schedule = new Schedule();
+        private Schedule schedule = null;
         private NewEvent newEvent = new NewEvent();
         public NewEventWindow(ref Schedule schedule)
         {
@@ -45,8 +45,8 @@ namespace Forgets
                 var isImportant = newEvent.IsImportant;
                 var shouldRemind = newEvent.ShouldRemind;
                 var remindTime = new DateTime();
-                
-                if(shouldRemind)
+
+                if (shouldRemind)
                     remindTime = Convert.ToDateTime($"{newEvent.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
 
                 bool areAllFieldsNotEmpty = false;

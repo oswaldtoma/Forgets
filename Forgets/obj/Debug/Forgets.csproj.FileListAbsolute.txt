@@ -45,3 +45,12 @@ C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\Forgets.csproj.CopyComple
 C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\ForgetsDb.mdf
 C:\Users\Oswald\source\repos\forgets\Forgets\bin\Debug\ForgetsDb_log.ldf
 C:\Users\Oswald\source\repos\forgets\Forgets\obj\Debug\Forgets_Content.g.cs
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\ForgetsDb.mdf
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\ForgetsDb_log.ldf
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\EntityFramework.dll
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\EntityFramework.xml
+C:\Users\user\source\repos\Forgets\Forgets\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets_Content.g.cs
+C:\Users\user\source\repos\Forgets\Forgets\obj\Debug\Forgets.csproj.CopyComplete

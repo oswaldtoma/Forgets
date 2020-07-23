@@ -24,8 +24,8 @@ namespace Forgets
 
         public Schedule()
         {
+            CompareCollectionsAndMirror();
             Events.CollectionChanged += OnEventsChanged;
-            CompareCollectionsAndEqualize();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,26 +39,13 @@ namespace Forgets
         public DbManager DatabaseManager = new DbManager();
         public ObservableCollection<IScheduleRecord> Events = new ObservableCollection<IScheduleRecord>();
 
-        private void CompareCollectionsAndEqualize()
+        private void CompareCollectionsAndMirror()
         {
             if (DatabaseManager.scheduleRecords.Any())
             {
-                for (int i = 0; i < DatabaseManager.scheduleRecords.Count(); i++)
+                foreach (var item in DatabaseManager.scheduleRecords)
                 {
-                    if (Events[i] != DatabaseManager.scheduleRecords.ToList()[i])
-                    {
-                        Events[i] = DatabaseManager.scheduleRecords.ToList()[i];
-                    }
-                }
-            }
-            else if (Events.Any())
-            {
-                for (int i = 0; i < Events.Count(); i++)
-                {
-                    if (DatabaseManager.scheduleRecords.ToList()[i] != Events[i])
-                    {
-                        DatabaseManager.scheduleRecords.ToList()[i] = Events[i];
-                    }
+                    Events.Add(item);
                 }
             }
         }
@@ -71,14 +58,16 @@ namespace Forgets
                 {
                     DatabaseManager.scheduleRecords.Add((IScheduleRecord)item);
                 }
+                DatabaseManager.SaveChanges();
             }
 
-            if(e.OldItems != null)
+            if (e.OldItems != null)
             {
                 foreach (var item in e.OldItems)
                 {
                     DatabaseManager.scheduleRecords.Remove((IScheduleRecord)item);
                 }
+                DatabaseManager.SaveChanges();
             }
         }
     }
