@@ -57,7 +57,7 @@ namespace Forgets
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            IScheduleRecord recordToRemind = null; 
+            ScheduleRecord recordToRemind = null; 
 
             if(prevMinutes != DateTime.Now.Minute)
             {
@@ -91,7 +91,7 @@ namespace Forgets
 
         private bool EventFilter(object item)
         {
-            var eventVar = item as IScheduleRecord;
+            var eventVar = item as ScheduleRecord;
 
             if (Calendar.SelectedDate.HasValue)
             {
@@ -114,7 +114,7 @@ namespace Forgets
 
         private void removeEventButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedRecords = dailySchedule.SelectedItems.Cast<IScheduleRecord>().ToList();
+            var selectedRecords = dailySchedule.SelectedItems.Cast<ScheduleRecord>().ToList();
 
             foreach (var item in selectedRecords)
             {

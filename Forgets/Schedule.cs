@@ -37,7 +37,7 @@ namespace Forgets
         }
 
         public DbManager DatabaseManager = new DbManager();
-        public ObservableCollection<IScheduleRecord> Events = new ObservableCollection<IScheduleRecord>();
+        public ObservableCollection<ScheduleRecord> Events = new ObservableCollection<ScheduleRecord>();
 
         private void CompareCollectionsAndMirror()
         {
@@ -56,7 +56,7 @@ namespace Forgets
             {
                 foreach (var item in e.NewItems)
                 {
-                    DatabaseManager.scheduleRecords.Add((IScheduleRecord)item);
+                    DatabaseManager.scheduleRecords.Add((ScheduleRecord)item);
                 }
                 DatabaseManager.SaveChanges();
             }
@@ -65,7 +65,7 @@ namespace Forgets
             {
                 foreach (var item in e.OldItems)
                 {
-                    DatabaseManager.scheduleRecords.Remove((IScheduleRecord)item);
+                    DatabaseManager.scheduleRecords.Remove((ScheduleRecord)item);
                 }
                 DatabaseManager.SaveChanges();
             }

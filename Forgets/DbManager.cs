@@ -14,6 +14,6 @@ namespace Forgets
 
         }
 
-        public DbSet<IScheduleRecord> scheduleRecords { get; set; }
+        public DbSet<ScheduleRecord> scheduleRecords { get; set; }
     }
 }

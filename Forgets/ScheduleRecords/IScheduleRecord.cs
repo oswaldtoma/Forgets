@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Forgets
 {
-    public class IScheduleRecord
+    public class ScheduleRecord
     {
         /// <summary>
         /// 
