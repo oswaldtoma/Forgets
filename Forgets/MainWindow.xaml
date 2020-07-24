@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Forgets"
         mc:Ignorable="d"
-        Title="Forgets" Height="450" Width="800" StateChanged="Window_StateChanged">
+        Title="Forgets" Height="448.978" Width="800" StateChanged="Window_StateChanged">
     <Window.Resources>
         <local:TEventToStringConverter x:Key="TEventToStringConverter"/>
     </Window.Resources>
@@ -30,12 +30,36 @@
                 </ListView.Resources>
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding RecordType, Converter={StaticResource TEventToStringConverter}}" Width="Auto"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding RecordName}" Width="Auto"/>
-                        <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding StartTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto"/>
-                        <GridViewColumn Header="End Time" DisplayMemberBinding="{Binding EndTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto"/>
-                        <GridViewColumn Header="Location" DisplayMemberBinding="{Binding Location}" Width="Auto"/>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding RecordType, Converter={StaticResource TEventToStringConverter}}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="RecordType" Click="GridViewColumnHeader_Click">Type</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding RecordName}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Name" Click="GridViewColumnHeader_Click">Name</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding StartTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="StartTime" Click="GridViewColumnHeader_Click">Start Time</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                         </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding EndTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="EndTime" Click="GridViewColumnHeader_Click">End Time</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Location}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Location" Click="GridViewColumnHeader_Click">Location</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="Auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Description" Click="GridViewColumnHeader_Click">Description</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

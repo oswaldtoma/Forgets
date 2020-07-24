@@ -44,7 +44,7 @@ namespace Forgets
                 var location = newEvent.Location;
                 var isImportant = newEvent.IsImportant;
                 var shouldRemind = newEvent.ShouldRemind;
-                var remindTime = new DateTime();
+                DateTime? remindTime = null;
 
                 if (shouldRemind)
                     remindTime = Convert.ToDateTime($"{newEvent.RemindDate.Value.ToShortDateString()} {RemindTimePicker.Time.ToShortTimeString()}", CultureInfo.CurrentCulture);
@@ -149,7 +149,7 @@ namespace Forgets
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Make sure all required fields are filled!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(ex.InnerException.ToString(), "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

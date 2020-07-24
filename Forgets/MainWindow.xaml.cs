@@ -127,5 +127,13 @@ namespace Forgets
             if (WindowState == WindowState.Minimized)
                 this.Hide();
         }
+
+        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader column = sender as GridViewColumnHeader;
+
+            string sortBy = column.Tag.ToString();
+            dailySchedule.Items.SortDescriptions.Add(new SortDescription(sortBy, ListSortDirection.Descending));
+        }
     }
 }
