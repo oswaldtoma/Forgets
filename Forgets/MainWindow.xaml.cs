@@ -30,6 +30,7 @@ namespace Forgets
     {
         public Schedule schedule = new Schedule();
         NotifyIcon trayIcon = new NotifyIcon();
+        CollectionView collectionView = null;
 
         int prevMinutes = DateTime.Now.Minute;
 
@@ -38,8 +39,9 @@ namespace Forgets
             InitializeComponent();
             dailySchedule.ItemsSource = schedule.Events;
             Calendar.SelectedDate = DateTime.Today;
-            CollectionView collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
+            collectionView = (CollectionView)CollectionViewSource.GetDefaultView(dailySchedule.ItemsSource);
             collectionView.Filter = EventFilter;
+
             this.DataContext = schedule;
 
             trayIcon.Icon = new Icon("icon.ico");
@@ -132,8 +134,28 @@ namespace Forgets
         {
             GridViewColumnHeader column = sender as GridViewColumnHeader;
 
-            string sortBy = column.Tag.ToString();
-            dailySchedule.Items.SortDescriptions.Add(new SortDescription(sortBy, ListSortDirection.Descending));
+            if (column != null)
+            {
+                string sortBy = column.Tag.ToString();
+
+                var foundDescription = collectionView.SortDescriptions.Where(x => x.PropertyName == sortBy).LastOrDefault();
+
+                if (foundDescription.PropertyName != null)
+                {
+                    if (collectionView.SortDescriptions.Count > 0)
+                        collectionView.SortDescriptions.Clear();
+
+                    collectionView.SortDescriptions.Add(new SortDescription(sortBy, foundDescription.Direction == ListSortDirection.Descending ? ListSortDirection.Ascending : ListSortDirection.Descending));
+                    collectionView.SortDescriptions.Remove(foundDescription);
+                }
+                else
+                {
+                    if (collectionView.SortDescriptions.Count > 0)
+                        collectionView.SortDescriptions.Clear();
+
+                    collectionView.SortDescriptions.Add(new SortDescription(sortBy, ListSortDirection.Descending));
+                }
+            }
         }
     }
 }

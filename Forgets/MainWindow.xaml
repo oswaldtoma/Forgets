@@ -37,7 +37,7 @@
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding RecordName}" Width="Auto">
                             <GridViewColumn.Header>
-                                <GridViewColumnHeader Tag="Name" Click="GridViewColumnHeader_Click">Name</GridViewColumnHeader>
+                                <GridViewColumnHeader Tag="RecordName" Click="GridViewColumnHeader_Click">Name</GridViewColumnHeader>
                             </GridViewColumn.Header>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding StartTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto">
