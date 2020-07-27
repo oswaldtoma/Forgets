@@ -8,32 +8,66 @@
         Title="Forgets" Height="448.978" Width="800" StateChanged="Window_StateChanged">
     <Window.Resources>
         <local:TEventToStringConverter x:Key="TEventToStringConverter"/>
+        <local:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
     </Window.Resources>
     <Grid Background="#FFE5E5E5" Margin="0,0,0,-6">
         <Grid Margin="0,0,0,-3">
-            <!--<Grid.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF004080" Offset="0"/>
-                            <GradientStop Color="#FFABD5FF" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Grid.Background>-->
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF004080" Offset="0"/>
+                    <GradientStop Color="#FFABD5FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Calendar x:Name="Calendar" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDatesChanged="Calendar_SelectedDatesChanged" Height="166" Width="183"/>
-            <ListView x:Name="dailySchedule" ItemsSource="{Binding Events}" Grid.ColumnSpan="2" Margin="198,0,0,0">
+            <Calendar x:Name="Calendar" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDatesChanged="Calendar_SelectedDatesChanged" Height="166" Width="183" Foreground="#FF0075E8">
+                <Calendar.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE4EAF0" Offset="0"/>
+                        <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                        <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                        <GradientStop Color="#FFE6E6E6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Calendar.Background>
+                <Calendar.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FF071A29" Offset="1"/>
+                    </LinearGradientBrush>
+                </Calendar.BorderBrush>
+            </Calendar>
+            <ListView x:Name="dailySchedule" ItemsSource="{Binding Events}" Grid.ColumnSpan="2" Margin="198,0,0,0" Background="White" BorderBrush="White" Foreground="#FF77A8D8">
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         <Setter Property="HorizontalContentAlignment" Value="Left" />
                     </Style>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsImportant}" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="Crimson" Opacity="0.15"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
                 </ListView.Resources>
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <GridViewColumn DisplayMemberBinding="{Binding RecordType, Converter={StaticResource TEventToStringConverter}}" Width="Auto">
+                        <GridViewColumn Width="Auto">
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader Tag="RecordType" Click="GridViewColumnHeader_Click">Type</GridViewColumnHeader>
                             </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="RecordTypeBlock" Text="{Binding RecordType, Converter={StaticResource TEventToStringConverter}}" Foreground="{Binding RecordTypeColor, Converter={StaticResource ColorToBrushConverter}}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding RecordName}" Width="Auto">
                             <GridViewColumn.Header>
@@ -44,7 +78,7 @@
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader Tag="StartTime" Click="GridViewColumnHeader_Click">Start Time</GridViewColumnHeader>
                             </GridViewColumn.Header>
-                         </GridViewColumn>
+                        </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding EndTime, StringFormat='dd-MM-yyyy HH:mm'}" Width="Auto">
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader Tag="EndTime" Click="GridViewColumnHeader_Click">End Time</GridViewColumnHeader>

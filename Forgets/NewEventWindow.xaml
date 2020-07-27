@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Forgets"
         mc:Ignorable="d"
-        Title="Add new event" Height="390" Width="571.578" ResizeMode="NoResize">
-    <Grid>
+        Title="Add new event" Height="405.333" Width="584.245" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Left" Width="578">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFABD5FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label Content="Event type:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
         <Label Content="Description:" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
@@ -28,7 +34,7 @@
         <DatePicker x:Name="EndTimeDatePicker" SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" IsTodayHighlighted="True" AutomationProperties.IsRequiredForForm="True"/>
         <CheckBox x:Name="ImportantCheckBox" IsChecked="{Binding IsImportant}" HorizontalAlignment="Left" Margin="83,215,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True"/>
         <DatePicker x:Name="RemindDatePicker" SelectedDate="{Binding RemindDate}" IsEnabled="{Binding ElementName=RemindCheckbox, Path=IsChecked}" HorizontalAlignment="Left" Margin="359,67,0,0" VerticalAlignment="Top" SelectedDateFormat="Long"/>
-        <Button x:Name="ConfirmButton" Content="Confirm and finish" HorizontalAlignment="Left" Margin="349,331,0,0" VerticalAlignment="Top" Width="207" Click="ConfirmButton_Click"/>
+        <Button x:Name="ConfirmButton" Content="Confirm and finish" HorizontalAlignment="Left" Margin="349,331,0,0" Width="207" Click="ConfirmButton_Click" Background="#FFDDDDDD" Height="20" VerticalAlignment="Top"/>
         <DatePicker x:Name="StartTimeDatePicker" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" AutomationProperties.IsRequiredForForm="True"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="193" Click="CancelButton_Click"/>
         <local:TimePicker x:Name="StartTimePicker" Time="{Binding StartTime}" HorizontalAlignment="Left" Height="40" Margin="0,286,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.IsRequiredForForm="True"/>

@@ -8,7 +8,7 @@ namespace Forgets
         public Meeting()
         {
             RecordType = Schedule.TEvent.TE_MEETING;
-            RecordTypeColor = Color.FromRgb(255,0,0);
+            RecordTypeColor = Color.FromRgb(128,128,75);
         }
     }
 }

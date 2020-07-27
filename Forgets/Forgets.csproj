@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ColorToBrushConverter.cs" />
     <Compile Include="DbManager.cs" />
     <Compile Include="NewEvent.cs" />
     <Compile Include="ScheduleRecords\Appointment.cs" />

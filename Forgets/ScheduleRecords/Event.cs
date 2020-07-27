@@ -8,7 +8,7 @@ namespace Forgets
         public Event()
         {
             RecordType = Schedule.TEvent.TE_EVENT;
-            RecordTypeColor = Color.FromRgb(0,0,120);
+            RecordTypeColor = Color.FromRgb(50,0,120);
         }
     }
 }
